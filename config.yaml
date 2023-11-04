@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: edgebit-system
+  labels:
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/enforce-version: latest
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: edgebit-agent-config
+  namespace: edgebit-system
+  labels: {}
+data:
+  edgebit-url: https://udensicivo.edgebit.io
+  cluster-name: demo
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: edgebit-agent-api-key
+  namespace: edgebit-system
+  labels: {}
+type: Opaque
+stringData:
+  edgebit-id: Y6yGTnrS7WNWASZ6wFiY6Lhef_MLxYAp2xNbA7CXtvdMtEgL5USbUL5Y8M
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-agent-api-key
+  namespace: edgebit-system
+type: Opaque
+stringData:
+  edgebit-id: ppsV2uvQPaXmVAoU1HgwPXiM_QtsKkcmsSzJxe7NyBh3QqrMfXpqA2tdz
